@@ -86,3 +86,29 @@ export const deleteNote = asyncHandler(async (req, res) => {
   }
 });
 
+export const markAsCompleted = asyncHandler(async (req, res) => {
+  const { id } = req.params;
+
+  try {
+  const note =  await Notes.findOne({_id:id})
+
+    if(note.completed == true) { 
+      note.completed = false;
+      await note.save()
+    }else { 
+      note.completed = true;
+      await note.save()
+    }
+
+    if (!note) {
+      return res.status(404).json({ message: "Note not found", code: 0 });
+    }
+
+    res
+      .status(200)
+      .json({ message: "Note marked as completed", code: 1, data: note });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Internal Server Error", code: 0 });
+  }
+});
