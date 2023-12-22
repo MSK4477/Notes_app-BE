@@ -30,7 +30,7 @@ export const register  = asyncHandler(async(req, res) =>  {
 
         const token = await  tokenGenarator(email) 
 
-        const link = `http://localhost:3000/verify?token=${token}`
+        const link = `https://chimerical-pavlova-f3ee47.netlify.app/verify?token=${token}`
         const to = email;
         const subject = ` Verify Your Email  `;
         const text = `<h1>Hello ${name} !!</h1>         
@@ -129,7 +129,7 @@ export const verify = asyncHandler(async (req, res) => {
   
     const token = await tokenGenarator(email);
   
-    const resetLink = `http://localhost:5173/resetpassword?token=${token}`;
+    const resetLink =`https://chimerical-pavlova-f3ee47.netlify.app/resetpassword?token=${token}`;
   
     const to = email;
   
