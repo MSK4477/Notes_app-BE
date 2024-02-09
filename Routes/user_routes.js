@@ -4,7 +4,7 @@ import { Router } from "express";
 
 const userRouter = Router()
 
-userRouter.get("/", protect, getUser)
+userRouter.get("/", getUser)
 
 userRouter.post("/update", protect, updateUser)
 
